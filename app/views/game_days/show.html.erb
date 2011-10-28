@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Date:</b>
+  <%= @game_day.date %>
+</p>
+
+<p>
+  <b>Weeknumber:</b>
+  <%= @game_day.weekNumber %>
+</p>
+
+
+<%= link_to 'Edit', edit_game_day_path(@game_day) %> |
+<%= link_to 'Back', game_days_path %>
