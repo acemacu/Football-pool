@@ -2,8 +2,10 @@ class GamesController < ApplicationController
   # GET /games
   # GET /games.xml
   def index
-    @games = Game.all
-
+    @week = Week.find(params[:week_id])
+    @season = Season.find(@week.season_id)
+    @games = @week.games
+    
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @games }
@@ -13,7 +15,9 @@ class GamesController < ApplicationController
   # GET /games/1
   # GET /games/1.xml
   def show
-    @game = Game.find(params[:id])
+    @week = Week.find(params[:week_id])
+    @season = Season.find(@week.season_id)
+    @game = @week.games.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -24,7 +28,9 @@ class GamesController < ApplicationController
   # GET /games/new
   # GET /games/new.xml
   def new
-    @game = Game.new
+    @week = Week.find(params[:week_id])
+    @season = Season.find(@week.season_id)
+    @game = @week.games.build
 
     respond_to do |format|
       format.html # new.html.erb
@@ -34,17 +40,21 @@ class GamesController < ApplicationController
 
   # GET /games/1/edit
   def edit
-    @game = Game.find(params[:id])
+    @week = Week.find(params[:week_id])
+    @season = Season.find(@week.season_id)
+    @game = @week.games.find(params[:id])
   end
 
   # POST /games
   # POST /games.xml
   def create
-    @game = Game.new(params[:game])
+    @week = Week.find(params[:week_id])
+    @season = Season.find(@week.season_id)
+    @game = @week.games.new(params[:game])
 
     respond_to do |format|
       if @game.save
-        format.html { redirect_to(@game, :notice => 'Game was successfully created.') }
+        format.html { redirect_to season_week_game_url(@season, @week, @game) }
         format.xml  { render :xml => @game, :status => :created, :location => @game }
       else
         format.html { render :action => "new" }
@@ -56,7 +66,9 @@ class GamesController < ApplicationController
   # PUT /games/1
   # PUT /games/1.xml
   def update
-    @game = Game.find(params[:id])
+    @week = Week.find(params[:week_id])
+    @season = Season.find(@week.season_id)
+    @game = @week.games.find(params[:id])
 
     respond_to do |format|
       if @game.update_attributes(params[:game])

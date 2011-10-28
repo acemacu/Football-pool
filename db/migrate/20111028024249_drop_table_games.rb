@@ -1,5 +1,9 @@
-class CreateGames < ActiveRecord::Migration
+class DropTableGames < ActiveRecord::Migration
   def self.up
+    drop_table :games
+  end
+
+  def self.down
     create_table :games do |t|
       t.integer :home_team_id
       t.integer :away_team_id
@@ -10,9 +14,5 @@ class CreateGames < ActiveRecord::Migration
 
       t.timestamps
     end
-  end
-
-  def self.down
-    drop_table :games
   end
 end

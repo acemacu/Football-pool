@@ -1,7 +1,11 @@
 FootballPoll::Application.routes.draw do
-  resources :games
+  
 
-  resources :game_days
+  resources :seasons do
+    resources :weeks do
+      resources :games
+    end
+  end
 
   resources :teams
 

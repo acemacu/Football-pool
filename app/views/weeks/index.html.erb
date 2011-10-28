@@ -1,0 +1,24 @@
+<h1>Listing weeks</h1>
+
+<table>
+  <tr>
+    <th>Number</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @season.weeks.each do |week| %>
+  <tr>
+    <td><%= week.number %></td>
+    <td><%= link_to 'Show', season_week_path(@season, week) %></td>
+    <td><%= link_to 'Edit', edit_season_week_path(@season, week) %></td>
+    <td><%= link_to 'Destroy', season_week_path(@season, week), :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Week', new_season_week_path %>
+<%= link_to 'Back to Season', @season %>

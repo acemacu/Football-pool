@@ -1,0 +1,10 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Number:</b>
+  <%= @week.number %>
+</p>
+
+<%= link_to 'Go to games of the week', season_week_games_path(@season, @week) %> |
+<%= link_to 'Edit', edit_season_week_path(@season, @week) %> |
+<%= link_to 'Back', season_weeks_path(@season) %>

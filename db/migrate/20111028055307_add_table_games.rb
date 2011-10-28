@@ -1,11 +1,10 @@
-class CreateGames < ActiveRecord::Migration
+class AddTableGames < ActiveRecord::Migration
   def self.up
     create_table :games do |t|
       t.integer :home_team_id
       t.integer :away_team_id
       t.integer :score_home
       t.integer :score_away
-      t.integer :gameDay_id
       t.references :week
 
       t.timestamps

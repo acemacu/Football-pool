@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111027235519) do
+ActiveRecord::Schema.define(:version => 20111028055307) do
 
   create_table "game_days", :force => true do |t|
     t.datetime "date"
@@ -24,13 +24,28 @@ ActiveRecord::Schema.define(:version => 20111027235519) do
     t.integer  "away_team_id"
     t.integer  "score_home"
     t.integer  "score_away"
-    t.integer  "gameDay_id"
+    t.integer  "week_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "seasons", :force => true do |t|
+    t.integer  "number"
+    t.integer  "year_start"
+    t.integer  "year_end"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "teams", :force => true do |t|
     t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "weeks", :force => true do |t|
+    t.integer  "number"
+    t.integer  "season_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

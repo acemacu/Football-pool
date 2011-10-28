@@ -6,26 +6,25 @@
     <th>Away team</th>
     <th>Score home</th>
     <th>Score away</th>
-    <th>Gameday</th>
     <th></th>
     <th></th>
     <th></th>
   </tr>
 
-<% @games.each do |game| %>
+<% @week.games.each do |game| %>
   <tr>
     <td><%= game.home_team_id %></td>
     <td><%= game.away_team_id %></td>
     <td><%= game.score_home %></td>
     <td><%= game.score_away %></td>
-    <td><%= game.gameDay_id %></td>
-    <td><%= link_to 'Show', game %></td>
-    <td><%= link_to 'Edit', edit_game_path(game) %></td>
-    <td><%= link_to 'Destroy', game, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Show', season_week_game_path(@season, @week, game) %></td>
+    <td><%= link_to 'Edit', edit_season_week_game_path(@season, @week, game) %></td>
+    <td><%= link_to 'Destroy', season_week_game_path(@season, @week, game), :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Game', new_game_path %>
+<%= link_to 'New Game', new_season_week_game_path %> |
+<%= link_to 'Go to list of weeks', season_weeks_path(@season) %>
